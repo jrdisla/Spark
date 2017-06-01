@@ -55,9 +55,10 @@ List<Estudiante> listEstudent = new ArrayList<>();
             String htmlCode = automaticHtmlCode(listEstudent);
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Studens List");
-            attributes.put("tableRows", htmlCode );
+            attributes.put("table", htmlCode );
             return new ModelAndView(attributes, "listEstudent.ftl");
         }, FreeMarkerengine);
+
 
         post("/listStudents/", (request, response) -> {
             int matricula = Integer.parseInt(request.queryParams("matricula"));
@@ -69,7 +70,7 @@ List<Estudiante> listEstudent = new ArrayList<>();
             String htmlCode = automaticHtmlCode(listEstudent);
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Studens List");
-            attributes.put("tableRows", htmlCode);
+            attributes.put("table", htmlCode);
 
             return new ModelAndView(attributes, "listEstudent.ftl");
         }, FreeMarkerengine);
@@ -82,7 +83,7 @@ List<Estudiante> listEstudent = new ArrayList<>();
 
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Studens List");
-            attributes.put("tableRows", htmlString);
+            attributes.put("table", htmlString);
 
             return new ModelAndView(attributes, "listEstudent.ftl");
         }, FreeMarkerengine);
@@ -101,17 +102,17 @@ List<Estudiante> listEstudent = new ArrayList<>();
         }, FreeMarkerengine);
 
         post("/individualInfo/:matricula/", (request, response) -> {
-            int studentID = Integer.parseInt(request.params(":matricula"));
+            int matricula = Integer.parseInt(request.params(":matricula"));
             String name = request.queryParams("nombre");
             String lastName = request.queryParams("apellido");
             String phone = request.queryParams("telefono");
-            Estudiante student = new Estudiante(studentID, name, lastName, phone);
+            Estudiante student = new Estudiante(matricula, name, lastName, phone);
 
-                 int index = find(studentID);
+                 int index = find(matricula);
             listEstudent.get(index).setLastname(lastName);
             listEstudent.get(index).setName(name);
             listEstudent.get(index).setTel(phone);
-            listEstudent.get(index).setMatricula(studentID);
+            listEstudent.get(index).setMatricula(matricula);
 
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Información de Estudiante");

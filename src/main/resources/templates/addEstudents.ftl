@@ -13,9 +13,13 @@
 <div class="panel panel-primary">
     <div class="panel-heading">${Titulo}</div>
     <div class="panel-body">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="/addStudent/">Add Student</a></li>
+            <li><a href="/listStudents/">List Students</a></li>
 
+        </ul>
         <form action="/listStudents/" method="post">
-            <div class="input-group">
+            <div class="input-group" margin="auto">
                 Matricula: <input name="matricula" type="text" class="form-control" placeholder="Matricula Estudiante" aria-describedby="basic-addon1">
             </div>
             <div class="input-group">

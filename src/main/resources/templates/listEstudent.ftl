@@ -12,7 +12,6 @@
 <body>
 <h1>${Titulo}</h1>
 
-
 <br>
 <table  class="table table-striped">
     <thead>
@@ -25,7 +24,7 @@
     </tr>
     </thead>
     <tbody>
-    ${tableRows}
+    ${table}
     </tbody>
 </table>
 <a href="/addStudent/" class="btn btn-primary"  role="button">Add Student</a>

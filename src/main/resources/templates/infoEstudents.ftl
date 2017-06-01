@@ -21,7 +21,8 @@
         <p>
 
         </p>
-        <a href="/listStudents/">Volver a Listado</a></div>
+
+    <a href="/listStudents/" class="btn btn-primary"  role="button">Students List</a>
 </div>
 
 
