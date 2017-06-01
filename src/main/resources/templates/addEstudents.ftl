@@ -14,7 +14,7 @@
     <div class="panel-heading">${Titulo}</div>
     <div class="panel-body">
 
-        <form action="/studentList/" method="post">
+        <form action="/listStudents/" method="post">
             <div class="input-group">
                 Matricula: <input name="matricula" type="text" class="form-control" placeholder="Matricula Estudiante" aria-describedby="basic-addon1">
             </div>

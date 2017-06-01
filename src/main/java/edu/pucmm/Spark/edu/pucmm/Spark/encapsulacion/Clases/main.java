@@ -1,4 +1,4 @@
-package edu.pucmm.Spark.edu.pucmm.Spark.encapsulacion;
+package edu.pucmm.Spark.edu.pucmm.Spark.encapsulacion.Clases;
 import edu.pucmm.Spark.edu.pucmm.Spark.encapsulacion.Manejadores.ManejadorPlantilla;
 import spark.Spark;
 

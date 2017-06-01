@@ -21,7 +21,7 @@
         <p>
 
         </p>
-        <a href="/studentList/">Volver a Listado</a></div>
+        <a href="/listStudents/">Volver a Listado</a></div>
 </div>
 
 

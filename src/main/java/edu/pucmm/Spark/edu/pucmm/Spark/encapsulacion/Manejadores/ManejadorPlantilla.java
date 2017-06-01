@@ -1,6 +1,6 @@
 package edu.pucmm.Spark.edu.pucmm.Spark.encapsulacion.Manejadores;
 
-import edu.pucmm.Spark.edu.pucmm.Spark.encapsulacion.Estudiante;
+import edu.pucmm.Spark.edu.pucmm.Spark.encapsulacion.Clases.Estudiante;
 import freemarker.template.Configuration;
 import spark.ModelAndView;
 import spark.template.freemarker.FreeMarkerEngine;
@@ -34,32 +34,32 @@ List<Estudiante> listEstudent = new ArrayList<>();
 
     /***
      * http://localhost:4567/addStudent/
-     * @param engine
+     * @param FreeMarkerengine
      */
-    public void addStudent(FreeMarkerEngine engine) {
+    public void addStudent(FreeMarkerEngine FreeMarkerengine) {
         get("/addStudent/", (request, response) -> {
 
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Agregar Nuevo Estudiante");
             return new ModelAndView(attributes, "addEstudents.ftl");
-        }, engine);
+        }, FreeMarkerengine);
     }
 
     /***
-     * http://localhost:4567/studentList/
-     * @param engine
+     * http://localhost:4567/listStudents/
+     * @param FreeMarkerengine
 */
-    public void listStudents(FreeMarkerEngine engine) {
+    public void listStudents(FreeMarkerEngine FreeMarkerengine) {
 
-        get("/studentList/", (request, response) -> {
+        get("/listStudents/", (request, response) -> {
             String htmlCode = automaticHtmlCode(listEstudent);
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Studens List");
             attributes.put("tableRows", htmlCode );
             return new ModelAndView(attributes, "listEstudent.ftl");
-        }, engine);
+        }, FreeMarkerengine);
 
-        post("/studentList/", (request, response) -> {
+        post("/listStudents/", (request, response) -> {
             int matricula = Integer.parseInt(request.queryParams("matricula"));
             String name = request.queryParams("nombre");
             String lastname = request.queryParams("apellido");
@@ -72,9 +72,9 @@ List<Estudiante> listEstudent = new ArrayList<>();
             attributes.put("tableRows", htmlCode);
 
             return new ModelAndView(attributes, "listEstudent.ftl");
-        }, engine);
+        }, FreeMarkerengine);
 
-        delete("/studentList/", (request, response) -> {
+        delete("/listStudents/", (request, response) -> {
 
             listEstudent.remove(find(Integer.parseInt(request.queryParams("eliminar"))));
 
@@ -85,22 +85,22 @@ List<Estudiante> listEstudent = new ArrayList<>();
             attributes.put("tableRows", htmlString);
 
             return new ModelAndView(attributes, "listEstudent.ftl");
-        }, engine);
+        }, FreeMarkerengine);
      }
     /***
-     * http://localhost:4567/showStudentInfo/
-     * @param engine
+     * http://localhost:4567/individualInfo/
+     * @param FreeMarkerengine
      */
-    public void IndividualShow(FreeMarkerEngine engine) {
-        get("/showStudentInfo/:matricula/", (request, response) -> {
+    public void IndividualShow(FreeMarkerEngine FreeMarkerengine) {
+        get("/individualInfo/:matricula/", (request, response) -> {
             Estudiante estudiante = listEstudent.get(find(Integer.parseInt(request.params(":matricula"))));
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Información de Estudiante");
             attributes.put("Student", estudiante);
             return new ModelAndView(attributes, "infoEstudents.ftl");
-        }, engine);
+        }, FreeMarkerengine);
 
-        post("/showStudentInfo/:matricula/", (request, response) -> {
+        post("/individualInfo/:matricula/", (request, response) -> {
             int studentID = Integer.parseInt(request.params(":matricula"));
             String name = request.queryParams("nombre");
             String lastName = request.queryParams("apellido");
@@ -117,20 +117,20 @@ List<Estudiante> listEstudent = new ArrayList<>();
             attributes.put("Titulo", "Información de Estudiante");
             attributes.put("Student", student);
             return new ModelAndView(attributes, "infoEstudents.ftl");
-        }, engine);
+        }, FreeMarkerengine);
     }
     /***
-     * http://localhost:4567/updateStudent/
-     * @param engine
+     * http://localhost:4567/actStudent/
+     * @param FreeMarkerengine
      */
-    public void updateStudent(FreeMarkerEngine engine) {
-        get("/updateStudent/:matricula/", (request, response) -> {
+    public void updateStudent(FreeMarkerEngine FreeMarkerengine) {
+        get("/actStudent/:matricula/", (request, response) -> {
             Estudiante student = listEstudent.get(find(Integer.parseInt(request.params(":matricula"))));
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Actualizando Estudiante");
             attributes.put("Student", student);
             return new ModelAndView(attributes, "updateEstudent.ftl");
-        }, engine);
+        }, FreeMarkerengine);
     }
 
 
@@ -143,7 +143,7 @@ List<Estudiante> listEstudent = new ArrayList<>();
             int index = find(studentID);
             listEstudent.remove(index);
 
-            response.redirect("/studentList/");
+            response.redirect("/listStudents/");
             return "";
         });
     }
@@ -152,13 +152,13 @@ List<Estudiante> listEstudent = new ArrayList<>();
     private String automaticHtmlCode(List<Estudiante> estudents) {
         String htmlCode = "";
         for (Estudiante item : estudents) {
-            htmlCode += "<tr onclick=\"document.location = '/showStudentInfo/" + item .getMatricula() + "/';\">" + "\n\t\t" +
+            htmlCode += "<tr onclick=\"document.location = '/individualInfo/" + item .getMatricula() + "/';\">" + "\n\t\t" +
                     "<td>" + item .getMatricula() + "</td>" + "\n\t\t" +
                     "<td>" + item .getName() + "</td>" + "\n\t\t" +
                     "<td>" + item .getLastname() + "</td>" + "\n\t\t" +
                     "<td>" + item .getTel() + "</td>" + "\n\t\t" +
                     "<td>" + "\n\t\t\t" +
-                    "<a href=\"/updateStudent/" + item .getMatricula() + "/\" class=\"btn btn-warning\"  role=\"button\">Actualizar</a>" + "\n\t\t\t" +
+                    "<a href=\"/actStudent/" + item .getMatricula() + "/\" class=\"btn btn-warning\"  role=\"button\">Actualizar</a>" + "\n\t\t\t" +
                     "<a href=\"/deleteStudent/" + item .getMatricula() + "/\"class=\"btn btn-danger\"  role=\"button\">Eliminar</a>" + "\n\t\t\t" +
                     "</td>" + "\n\t    " +
                     "</tr>\n\t    ";

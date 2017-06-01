@@ -1,4 +1,4 @@
-package edu.pucmm.Spark.edu.pucmm.Spark.encapsulacion;
+package edu.pucmm.Spark.edu.pucmm.Spark.encapsulacion.Clases;
 
 /**
  * Created by jrdis on 31/5/2017.
