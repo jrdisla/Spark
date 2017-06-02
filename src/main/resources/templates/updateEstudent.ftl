@@ -13,7 +13,8 @@
 
 <div class="panel panel-danger">
     <div class="panel-heading">${Titulo}</div>
-    <div class="panel-body"><form action="/individualInfo/${Student.matricula?string["0"]}/" method="post">
+    <div class="panel-body">
+        <form action="/individualInfo/${Student.matricula?string["0"]}/" method="post">
 
 
         <div class="input-group">
