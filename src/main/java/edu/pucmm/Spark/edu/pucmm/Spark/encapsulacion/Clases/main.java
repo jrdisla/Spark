@@ -9,13 +9,14 @@ import static spark.Spark.*;
 public class main {
     public static void main(String[] args) {
 
+        Spark.staticFileLocation("/public");
 
         Spark.port(getHerokuAssignedPort());
+
         get("/", (request, response) -> {
             return "Hola Mundo Heroku";
         });
-        //Spark.staticFileLocation("/public");
-        //new ManejadorPlantilla().startApp();
+     //   new ManejadorPlantilla().startApp();
 
     }
     static int getHerokuAssignedPort() {

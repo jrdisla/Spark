@@ -1,1 +1,1 @@
-web: ./build/install/Spark/bin/Spark
+web: build/install/Spark/bin/Spark
