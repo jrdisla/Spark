@@ -1,1 +1,1 @@
-web: build/install/sparkcred/bin/sparkcred
+web: build/install/Spark/bin/Spark
