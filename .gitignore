@@ -1,17 +1,1 @@
 
-
-# Ignore Gradle GUI config
-gradle-app.setting
-
-#Intellij
-.idea/
-
-*.iws
-/SparkBarCamp2014/.nb-gradle/
-.idea/uiDesigner.xml
-.idea/workspace.xml
-//src/main/java/edu/pucmm/Spark/edu/pucmm/Spark/encapsulacion/resources/
-src/main/resources/public/
-//src/main/resources/templates/addEstudents.ftl
-//src/main/resources/templates/listEstudent.ftl
-src/test/

@@ -3,9 +3,9 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'application'
 
-archivesBaseName = 'sparkcred2'
+archivesBaseName = 'sparkcred1'
 version='1.0'
-applicationName = 'sparkcred2'
+applicationName = 'sparkcred1'
 mainClassName = 'main'
 
 sourceCompatibility = 1.8
@@ -25,6 +25,5 @@ dependencies {
     compile 'org.slf4j:slf4j-simple:1.7.21'
 
 }
-task stage {
-    dependsOn installDist
-}
+defaultTasks = ['clean']
+task stage (dependsOn: ['clean','installApp'])
