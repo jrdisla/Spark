@@ -11,8 +11,11 @@ public class main {
 
 
         Spark.port(getHerokuAssignedPort());
-        Spark.staticFileLocation("/public");
-        new ManejadorPlantilla().startApp();
+        get("/", (request, response) -> {
+            return "Hola Mundo Heroku";
+        });
+        //Spark.staticFileLocation("/public");
+        //new ManejadorPlantilla().startApp();
 
     }
     static int getHerokuAssignedPort() {
