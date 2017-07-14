@@ -22,7 +22,7 @@
 
         </p>
 
-    <a href="/listStudents/" class="btn btn-primary"  role="button">Students List</a>
+    <a href="/listStudents/" class="btn btn-primary"  role="button">Lista de Articulos</a>
 </div>
 
 

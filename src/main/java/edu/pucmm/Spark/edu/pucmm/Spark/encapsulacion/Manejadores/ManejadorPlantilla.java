@@ -65,9 +65,11 @@ List<Estudiante> listEstudent = new ArrayList<>();
             String name = request.queryParams("nombre");
             String lastname = request.queryParams("apellido");
             String tel = request.queryParams("telefono");
+
             Estudiante student = new Estudiante(matricula, name, lastname, tel);
             listEstudent.add(student);
             String htmlCode = automaticHtmlCode(listEstudent);
+
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("Titulo", "Studens List");
             attributes.put("table", htmlCode);
@@ -121,6 +123,7 @@ List<Estudiante> listEstudent = new ArrayList<>();
         }, FreeMarkerengine);
     }
     /***
+     *
      * http://localhost:4567/actStudent/
      * @param FreeMarkerengine
      */

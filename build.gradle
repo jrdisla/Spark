@@ -1,7 +1,12 @@
 group 'edu.pucmm'
 version '1.0-SNAPSHOT'
-
 apply plugin: 'java'
+apply plugin: 'application'
+
+archivesBaseName = 'sparkcred2'
+version='1.0'
+applicationName = 'sparkcred2'
+mainClassName = 'main'
 
 sourceCompatibility = 1.8
 
@@ -15,8 +20,11 @@ dependencies {
     compile group: 'com.sparkjava', name: 'spark-template-freemarker', version: '2.3'
     compile 'org.freemarker:freemarker:2.3.26'
     compile 'com.sparkjava:spark-debug-tools:0.5'
-    // https://mvnrepository.com/artifact/org.webjars/bootstrap
     compile group: 'org.webjars', name: 'bootstrap', version: '3.3.7'
+    compile "com.heroku.adk:heroku-jdbc:0.1.1"
+    compile 'org.slf4j:slf4j-simple:1.7.21'
 
-
+}
+task stage {
+    dependsOn installDist
 }

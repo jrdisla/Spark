@@ -16,7 +16,6 @@
     <div class="panel-body">
         <form action="/individualInfo/${Student.matricula?string["0"]}/" method="post">
 
-
         <div class="input-group">
             Nombre: <input name="nombre" type="text" class="form-control" value="${Student.name}" placeholder="Nombre Estudiante" aria-describedby="basic-addon1"><br/>
         </div>
