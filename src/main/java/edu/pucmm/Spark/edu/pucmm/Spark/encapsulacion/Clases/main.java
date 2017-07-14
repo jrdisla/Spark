@@ -14,10 +14,10 @@ public class main {
         Spark.staticFileLocation("/public");
 
 
-        get("/", (request, response) -> {
+        /*get("/", (request, response) -> {
             return "Hola Mundo Heroku";
-       });
-      // new ManejadorPlantilla().startApp();
+       });*/
+     new ManejadorPlantilla().startApp();
 
     }
     static int getHerokuAssignedPort() {
